@@ -1,0 +1,26 @@
+{
+  "gpt-4o": {
+    "model_id": "gpt-4o",
+    "intelligence_rank": 9,
+    "price_per_1k_input": 0.005,
+    "price_per_1k_output": 0.015
+  },
+  "gpt-4o-mini": {
+    "model_id": "gpt-4o-mini",
+    "intelligence_rank": 5,
+    "price_per_1k_input": 0.00015,
+    "price_per_1k_output": 0.0006
+  },
+  "gemini-1.5-pro": {
+    "model_id": "gemini-1.5-pro",
+    "intelligence_rank": 9,
+    "price_per_1k_input": 0.0035,
+    "price_per_1k_output": 0.0105
+  },
+  "gemini-1.5-flash": {
+    "model_id": "gemini-1.5-flash",
+    "intelligence_rank": 6,
+    "price_per_1k_input": 0.000075,
+    "price_per_1k_output": 0.0003
+  }
+}
