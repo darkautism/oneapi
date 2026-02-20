@@ -48,18 +48,18 @@ OneAPI is a high-performance LLM gateway designed for absolute transparency and 
 | **`config strategy`** | `oneapi config strategy <mode>` | Set global mode (`performance` \| `cost`). |
 | **`chain`** | `oneapi chain` | **Interactive manager** for multi-group fallback tiers. |
 
-> `account_tag` must be unique across all backends. Duplicate tags are rejected on load/save and API/CLI updates.
-> `--headless` now runs oneapi-native OAuth (prints auth URL, then asks for code/redirect URL) without entering Gemini TUI.  
-> Use `--headless --prepare-only` to only print manual steps; use `--headless --run-gemini` to force old Gemini TUI handoff.
-> With `--model-ids auto`, oneapi shows a model picker (when TTY is available), seeded with Gemini Code Assist defaults (`gemini-2.0/2.5/3` family), then merged with Gemini `/models` output (if available).
-> Gemini OAuth runtime requests are sent to Cloud Code Assist (`cloudcode-pa.googleapis.com`) with OAuth token + project context, not the Gemini API key endpoint.
-> OAuth client credentials can be provided via env (`ONEAPI_GEMINI_OAUTH_CLIENT_ID`, `ONEAPI_GEMINI_OAUTH_CLIENT_SECRET`; aliases: `GEMINI_OAUTH_CLIENT_ID`, `GEMINI_OAUTH_CLIENT_SECRET`).
-> If env vars are absent, oneapi can parse credentials from upstream source files (`ONEAPI_GEMINI_OAUTH_SOURCE_FILE` or common local pi-mono/gemini-cli install paths).
-> Re-running `backend gemini-oauth-login` on an existing Gemini OAuth account updates its model list/context/budget in-place instead of failing.
-> For accounts that only allow Standard tier, set `GOOGLE_CLOUD_PROJECT` (or `GOOGLE_CLOUD_PROJECT_ID`) before using that backend.
-> HTTP request/response body logging is DEBUG-level only (`RUST_LOG=debug` to enable verbose protocol logs).
-> oneapi does not locally clamp Gemini OAuth `maxOutputTokens`; when `max_tokens` is provided it is forwarded as-is, otherwise no explicit output cap is injected.
-> Different models/context windows/tool behaviors can still yield non-intuitive truncation or `MAX_TOKENS`; tune prompts and `max_tokens` per chain/backend.
+- `account_tag` must be unique across all backends. Duplicate tags are rejected on load/save and API/CLI updates.
+- `--headless` now runs oneapi-native OAuth (prints auth URL, then asks for code/redirect URL) without entering Gemini TUI.  
+- Use `--headless --prepare-only` to only print manual steps; use `--headless --run-gemini` to force old Gemini TUI handoff.
+- With `--model-ids auto`, oneapi shows a model picker (when TTY is available), seeded with Gemini Code Assist defaults (`gemini-2.0/2.5/3` family), then merged with Gemini `/models` output (if available).
+- Gemini OAuth runtime requests are sent to Cloud Code Assist (`cloudcode-pa.googleapis.com`) with OAuth token + project context, not the Gemini API key endpoint.
+- OAuth client credentials can be provided via env (`ONEAPI_GEMINI_OAUTH_CLIENT_ID`, `ONEAPI_GEMINI_OAUTH_CLIENT_SECRET`; aliases: `GEMINI_OAUTH_CLIENT_ID`, `GEMINI_OAUTH_CLIENT_SECRET`).
+- If env vars are absent, oneapi can parse credentials from upstream source files (`ONEAPI_GEMINI_OAUTH_SOURCE_FILE` or common local pi-mono/gemini-cli install paths).
+- Re-running `backend gemini-oauth-login` on an existing Gemini OAuth account updates its model list/context/budget in-place instead of failing.
+- For accounts that only allow Standard tier, set `GOOGLE_CLOUD_PROJECT` (or `GOOGLE_CLOUD_PROJECT_ID`) before using that backend.
+- HTTP request/response body logging is DEBUG-level only (`RUST_LOG=debug` to enable verbose protocol logs).
+- oneapi does not locally clamp Gemini OAuth `maxOutputTokens`; when `max_tokens` is provided it is forwarded as-is, otherwise no explicit output cap is injected.
+- Different models/context windows/tool behaviors can still yield non-intuitive truncation or `MAX_TOKENS`; tune prompts and `max_tokens` per chain/backend.
 
 ---
 
